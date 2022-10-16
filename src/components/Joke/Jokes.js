@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Joke from './Joke';
-import './Jokes.css'
+import './Jokes.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 const jokes = () => {
     const [jokes, setJokes] = useState([]);
@@ -37,8 +38,24 @@ const jokes = () => {
         const alllJokes = allJokes.filter(joke => joke.length !== 0)
         setJokes(alllJokes)
     }
+    // collect search word
+
+    const handleChange =(e) => {
+        const searchedText = e.target.value;
+        searchedText.length === 0 ?
+        setJokes(allJokes):
+        setJokes(allJokes.filter(joke => joke.categories.includes(searchedText.toLowerCase())))
+    }
     return (
         <div style={{ margin: '50px' }}>
+            <div className="wrap">
+                <div className="search">
+                    <input onChange={handleChange} type="text" className="searchTerm" placeholder="Search Jokes by Catrgory"/>
+                        <button type="submit" className="searchButton">
+                            <i className="fa fa-search"></i>
+                        </button>
+                </div>
+            </div>
             <div className='button-grid'>
                 <button className='button' onClick={handleExplicit}> EXPLICIT </button>
                 <button className='button' onClick={handleHistory}> HISTORY </button>
