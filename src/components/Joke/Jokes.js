@@ -21,6 +21,14 @@ const jokes = () => {
         const historyJokes = allJokes.filter(joke => joke.categories[0] === "history")
         setJokes(historyJokes)
     }
+    const handleScience = () => {
+        const scienceJokes = allJokes.filter(joke => joke.categories[0] === "science")
+        setJokes(scienceJokes)
+    }
+    const handleMoney = () => {
+        const moneyJokes = allJokes.filter(joke => joke.categories[0] === "money")
+        setJokes(moneyJokes)
+    }
     const handleUn = () => {
         const unJokes = allJokes.filter(joke => joke.categories.length === 0)
         setJokes(unJokes)
@@ -30,18 +38,23 @@ const jokes = () => {
         setJokes(alllJokes)
     }
     return (
-        <>
-            <button className='button' onClick={handleExplicit}> EXPLICIT </button>
-            <button className='button' onClick={handleHistory}> HISTORY </button>
-            <button className='button' onClick={handleUn}> UNCATEGORISED </button>
-            <button className='button' onClick={handleAll}> ALL JOKES </button>
+        <div style={{ margin: '50px' }}>
+            <div className='button-grid'>
+                <button className='button' onClick={handleExplicit}> EXPLICIT </button>
+                <button className='button' onClick={handleHistory}> HISTORY </button>
+                <button className='button' onClick={handleScience}> SCIENCE </button>
+                <button className='button' onClick={handleMoney}> MONEY </button>
+                <button className='button' onClick={handleUn}> UNCATEGORISED </button>
+                <button className='button' onClick={handleAll}> ALL JOKES </button>
+
+            </div>
             <h2> Total Jokes {jokes.length}</h2>
             <div className='card'>
                 {
                     jokes.map(joke => <Joke key={joke.id} joke={joke}></Joke>)
                 }
             </div>
-        </>
+        </div>
     );
 };
 

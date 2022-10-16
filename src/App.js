@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Jokes from './components/Joke/Jokes'
 import './App.css';
+import Home from './components/Home/Home/Home';
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Jokes/>} />
-          // <Route path='home' element={<Jokes />} />
+          <Route path='/' element={<Home/>} />
+          // <Route path='home' element={<Home />} />
 
           {/* <Route path='*' element={<NotFound/>}></Route> */}
         </Routes>
